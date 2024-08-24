@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Comparison Game</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e293b 0%, #111827 100%);
+      font-family: 'Poppins', sans-serif;
+    }
+    .word-option h2 {
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .word-option:hover h2 {
+      transform: scale(1.05);
+    }
+    .popularity {
+      visibility: hidden;
+    }
+    .word-image {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    /* Custom Styles for word1 */
+    .custom-word1 {
+      border-radius: 65px;
+      background: linear-gradient(145deg, #1c49e6, #2157ff);
+      box-shadow: 5px 5px 10px #163ab8, -5px -5px 10px #2868ff;
+    }
+    
+    /* New Custom Styles for word2 */
+    .custom-word2 {
+      border-radius: 65px;
+      background: linear-gradient(145deg, #9b1d54, #b82264);
+      box-shadow: 5px 5px 10px #7c1743, -5px -5px 10px #dc2977;
+    }
+  </style>
+</head>
+<body class="relative flex items-center justify-center min-h-screen">
+  <div class="absolute top-4 right-4">
+    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors" onclick="restartGame()">Restart Game</button>
+  </div>
+  <div class="bg-gray-800 shadow-lg rounded-lg p-8 text-center w-full max-w-lg">
+    <h1 class="text-3xl font-bold mb-6 text-white">Which is More Popular?</h1>
+    <div id="game" class="mb-6">
+      <div class="flex justify-around items-center mb-8">
+        <div class="word-option cursor-pointer text-center" id="word1" onclick="chooseWord('word1')">
+          <img id="word1-image" class="word-image" src="" alt="Word 1 Image">
+          <p id="word1-popularity" class="text-lg font-semibold text-gray-300 mb-2 popularity">Popularity: </p>
+          <h2 class="text-xl font-bold p-4 text-white custom-word1" id="word1-text">Word 1</h2>
+        </div>
+        <div class="word-option cursor-pointer text-center" id="word2" onclick="chooseWord('word2')">
+          <img id="word2-image" class="word-image" src="" alt="Word 2 Image">
+          <p id="word2-popularity" class="text-lg font-semibold text-gray-300 mb-2 popularity">Popularity: </p>
+          <h2 class="text-xl font-bold p-4 text-white custom-word2" id="word2-text">Word 2</h2>
+        </div>
+      </div>
+      <p id="timer" class="text-xl font-semibold text-red-500 mb-4">Time Left: 15s</p>
+      <p id="result" class="text-lg font-semibold text-gray-300 mb-4"></p>
+      <p id="score" class="text-md font-semibold text-gray-300">Score: 0</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
