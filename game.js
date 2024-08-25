@@ -45,7 +45,7 @@ function shuffleArray(array) {
   }
 }
 
-// Start the game
+// Start the game, initializing player data and shuffling words
 function startGame() {
   playerName = document.getElementById('player-name').value.trim();
 
@@ -67,12 +67,12 @@ function startGame() {
   nextRound();
 }
 
-// Update the leaderboard
+// Update the leaderboard display in the DOM
 function updateLeaderboard() {
   const leaderboardList = document.getElementById('leaderboard-list');
   leaderboardList.innerHTML = '';
   Object.keys(leaderboard)
-    .sort((a, b) => leaderboard[b] - leaderboard[a])
+    .sort((a, b) => leaderboard[b] - leaderboard[a]) // Sort by scores in descending order
     .forEach(player => {
       const li = document.createElement('li');
       li.innerText = `${player}: ${leaderboard[player]}`;
@@ -80,12 +80,16 @@ function updateLeaderboard() {
     });
 }
 
-// Load the next round
+// Load the next round of the game
 function nextRound() {
   if (shuffledWords.length === 0) {
-    endGame();  // Call endGame when rounds are done
+    endGame();
     return;
   }
+
+  // Re-enable the buttons for the next round
+  document.getElementById('word1').style.pointerEvents = 'auto';
+  document.getElementById('word2').style.pointerEvents = 'auto';
 
   currentWordPair = shuffledWords.pop();
   const correctOnLeft = Math.random() < 0.5;
@@ -128,6 +132,10 @@ function updateTimer() {
 function chooseWord(selectedWord) {
   clearInterval(timerInterval);
 
+  // Disable the buttons to prevent spamming
+  document.getElementById('word1').style.pointerEvents = 'none';
+  document.getElementById('word2').style.pointerEvents = 'none';
+
   const isCorrect = (selectedWord === 'word1' && currentWordPair.correctOnLeft) || 
                     (selectedWord === 'word2' && !currentWordPair.correctOnLeft);
 
@@ -144,6 +152,7 @@ function chooseWord(selectedWord) {
   document.getElementById('word1-popularity').style.visibility = 'visible';
   document.getElementById('word2-popularity').style.visibility = 'visible';
 
+  // Move to the next round after a short delay
   setTimeout(() => {
     document.getElementById('result').innerText = '';
     nextRound();
@@ -171,7 +180,6 @@ function restartGame() {
   score = 0;
   updateLeaderboard();
 }
-
 
 // Event listeners for word clicks and buttons
 document.getElementById('word1').addEventListener('click', () => chooseWord('word1'));

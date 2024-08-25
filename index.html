@@ -13,47 +13,41 @@
     }
 
     #leaderboard {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 12px;
-      width: 250px;
-      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+  max-height: 300px; /* Set a maximum height for the leaderboard */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-    #leaderboard h2 {
-      font-size: 1.75rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-      color: #f9fafb;
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
+#leaderboard ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-    #leaderboard ul {
-      list-style-type: none;
-      padding: 0;
-    }
+#leaderboard li {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #f3f4f6;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
 
-    #leaderboard li {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-      color: #f3f4f6;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 8px 12px;
-      border-radius: 8px;
-      text-align: center;
-      transition: background 0.3s ease;
-    }
+#leaderboard li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
-    #leaderboard li:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
 
     #player-input, #game-content, #game-over {
       background: rgba(0, 0, 0, 0.8);
