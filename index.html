@@ -9,64 +9,252 @@
     body {
       background: linear-gradient(135deg, #1e293b 0%, #111827 100%);
       font-family: 'Poppins', sans-serif;
+      color: #e5e7eb;
     }
-    .word-option h2 {
-      transition: transform 0.3s ease, background-color 0.3s ease;
+
+    #leaderboard {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-    .word-option:hover h2 {
+
+    #leaderboard h2 {
+      font-size: 1.75rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #f9fafb;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #leaderboard ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #leaderboard li {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #f3f4f6;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+
+    #leaderboard li:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    #player-input, #game-content, #game-over {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+      margin: 20px;
+      padding: 2rem;
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    #player-input h1, #game-content h1, #game-over h1 {
+      font-size: 2.25rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+
+    #player-name {
+      border: 2px solid #4b5563;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      color: #000;
+    }
+
+    button {
+      background: linear-gradient(145deg, #1c49e6, #2157ff);
+      border-radius: 0.5rem;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(145deg, #2157ff, #1c49e6);
       transform: scale(1.05);
     }
-    .popularity {
-      visibility: hidden;
+
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
     }
+
+    .word-option {
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .word-option:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
     .word-image {
       width: 150px;
       height: 150px;
       object-fit: cover;
       border-radius: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 0.5rem;
+      border: 3px solid rgba(255, 255, 255, 0.2);
     }
-    
-    /* Custom Styles for word1 */
-    .custom-word1 {
-      border-radius: 65px;
-      background: linear-gradient(145deg, #1c49e6, #2157ff);
-      box-shadow: 5px 5px 10px #163ab8, -5px -5px 10px #2868ff;
+
+    #timer, #result, #score, #final-score {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-top: 1rem;
     }
-    
-    /* New Custom Styles for word2 */
-    .custom-word2 {
-      border-radius: 65px;
-      background: linear-gradient(145deg, #9b1d54, #b82264);
-      box-shadow: 5px 5px 10px #7c1743, -5px -5px 10px #dc2977;
+
+    #leaderboard {
+  /* Keeping the original size and styles for the leaderboard */
+}
+
+#game-over {
+  width: 100%; /* Full width of the viewport */
+  height: 100vh; /* Full viewport height */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange children vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  visibility: hidden; /* Hidden initially */
+  position: fixed; /* Fixed position in the viewport */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset to truly center */
+  background: rgba(0, 0, 0, 0.85); /* Dark semi-transparent background */
+  z-index: 1000; /* Make sure it stays on top of other elements */
+  padding: 20px; /* Add padding */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8); /* Shadow for depth */
+}
+
+
+
+#game-over.visible {
+  visibility: visible; /* Show the game-over section when needed */
+}
+
+#game-over h1 {
+  color: white; /* Ensure the text is visible */
+  font-size: 2rem; /* Larger font size for heading */
+  margin-bottom: 1.5rem; /* Space below heading */
+}
+
+#game-over p {
+  font-size: 1.25rem; /* Adjust font size for better readability */
+  color: #cccccc; /* Light gray for contrast */
+  margin-bottom: 1.5rem; /* Space below paragraph */
+}
+
+#game-over button {
+  background: linear-gradient(145deg, #403c3c, #4c4848); /* Gradient background */
+  border-radius: 108px; /* Make buttons rounded */
+  box-shadow: 5px 5px 0px #3a3636, -5px -5px 0px #545050; /* Add shadow for depth */
+  padding: 0.75rem 1.5rem; /* Ensure buttons have padding */
+  font-size: 1.25rem; /* Larger button text for clarity */
+  color: white; /* White text color */
+  cursor: pointer; /* Pointer cursor for better UX */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
+}
+
+#game-over button:hover {
+  transform: scale(1.05); /* Slight scaling effect on hover */
+  box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover */
+}
+
+
+    @media (max-width: 640px) {
+      #leaderboard {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        bottom: 20px;
+      }
+
+      .word-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      button {
+        width: 100%;
+        padding: 0.75rem;
+      }
     }
   </style>
 </head>
 <body class="relative flex items-center justify-center min-h-screen">
-  <div class="absolute top-4 right-4">
-    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors" onclick="restartGame()">Restart Game</button>
-  </div>
-  <div class="bg-gray-800 shadow-lg rounded-lg p-8 text-center w-full max-w-lg">
-    <h1 class="text-3xl font-bold mb-6 text-white">Which is More Popular?</h1>
-    <div id="game" class="mb-6">
-      <div class="flex justify-around items-center mb-8">
-        <div class="word-option cursor-pointer text-center" id="word1" onclick="chooseWord('word1')">
-          <img id="word1-image" class="word-image" src="" alt="Word 1 Image">
-          <p id="word1-popularity" class="text-lg font-semibold text-gray-300 mb-2 popularity">Popularity: </p>
-          <h2 class="text-xl font-bold p-4 text-white custom-word1" id="word1-text">Word 1</h2>
+
+  <!-- Leaderboard -->
+  <section id="leaderboard">
+    <h2>Leaderboard</h2>
+    <ul id="leaderboard-list"></ul>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main-content" class="w-full max-w-lg">
+    
+    <!-- Player name input -->
+    <section id="player-input">
+      <h1>Enter Your Name</h1>
+      <input type="text" id="player-name" placeholder="Your Name" aria-label="Player Name"/>
+      <button id="start-game">Start Game</button>
+    </section>
+
+    <!-- Game content (hidden until game starts) -->
+    <section id="game-content" class="hidden">
+      <h1>Which is More Popular?</h1>
+      <div id="game" class="mb-6">
+        <div class="flex justify-around items-center mb-8">
+          <div class="word-option" id="word1" role="button" aria-label="Select Word 1">
+            <img id="word1-image" class="word-image" src="" alt="Word 1 Image" />
+            <p id="word1-popularity" style="visibility: hidden;">Popularity: </p>
+            <h2 id="word1-text">Word 1</h2>
+          </div>
+          <div class="word-option" id="word2" role="button" aria-label="Select Word 2">
+            <img id="word2-image" class="word-image" src="" alt="Word 2 Image" />
+            <p id="word2-popularity" style="visibility: hidden;">Popularity: </p>
+            <h2 id="word2-text">Word 2</h2>
+          </div>
         </div>
-        <div class="word-option cursor-pointer text-center" id="word2" onclick="chooseWord('word2')">
-          <img id="word2-image" class="word-image" src="" alt="Word 2 Image">
-          <p id="word2-popularity" class="text-lg font-semibold text-gray-300 mb-2 popularity">Popularity: </p>
-          <h2 class="text-xl font-bold p-4 text-white custom-word2" id="word2-text">Word 2</h2>
-        </div>
+        <p id="timer">Time Left: 15s</p>
+        <p id="result"></p>
+        <p id="score">Score: 0</p>
       </div>
-      <p id="timer" class="text-xl font-semibold text-red-500 mb-4">Time Left: 15s</p>
-      <p id="result" class="text-lg font-semibold text-gray-300 mb-4"></p>
-      <p id="score" class="text-md font-semibold text-gray-300">Score: 0</p>
-    </div>
-  </div>
-  <script src="script.js"></script>
+    </section>
+
+    <!-- Game Over Page -->
+    <section id="game-over">
+      <h1>Game Over!</h1>
+      <p id="final-score">Congratulations! Your final score is 0</p>
+      <button id="play-again">Play Again</button>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
 </body>
 </html>
 
